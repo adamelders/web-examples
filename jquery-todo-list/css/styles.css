@@ -18,45 +18,6 @@ body {
     clear: both;
 }
 
-.fixedContainer {
-    height: 400px;
-    overflow: auto;
-}
-    
-.box {
-    height: 120px;
-    width: 120px;
-    background: #000;
-    color: white;
-    line-height: 120px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-}
-
-#box1 {
-  background: #38c;
-}
-
-#box2 {
-  background: #9d9;
-}
-
-#box3 {
-  background: #c27;
-}
-
-#droppable {
-    background: #222;
-    border: solid 2px #000;
-    height: 300px;
-    width: 400px;
-    line-height: 300px;
-    text-align: center;
-    color: white;
-    margin: 40px auto;
-}
-
 ul {
     width: 48%;
     float: left;
@@ -83,12 +44,6 @@ ul li:active {
     background: #ccc;
     border-color: #999;
     box-shadow: 0 10px -4px #111;
-}
-
-.placeholderBox {
-    background: #fc3;
-    height: 20px;
-    border: dashed 2px #777;
 }
 
 #todoListWrapper {

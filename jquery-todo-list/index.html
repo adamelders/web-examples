@@ -13,6 +13,8 @@
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     
+    <!-- jQuery UI CSS -->
+    <link href="js/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">    
   </head>
     
   <body>
@@ -56,6 +58,15 @@
     </div>
     
     <div id="trash">Drop an item here to delete it!</div>
+    
+    <!-- jQuery CDN -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <!-- Fall back to local jQuery if CDN fails to load -->
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.js"><\/script>');</script>
+    
+    <!-- jQuery UI -->
+    <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     
     <!-- Custom JS -->
     <script src="js/script.js"></script>
