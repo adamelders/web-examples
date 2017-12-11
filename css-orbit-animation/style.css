@@ -1,0 +1,258 @@
+/* Create animation for the stars fading in an out. */
+@-webkit-keyframes starPulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+@-moz-keyframes starPulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+@-o-keyframes starPulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes starPulse {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+/* Create animation for the Sun to make it glow. */
+@-webkit-keyframes sunFire {
+    0% {
+        -webkit-box-shadow: 0 0 50px #f5c91a;
+        -moz-box-shadow: 0 0 50px #f5c91a;
+        -o-box-shadow: 0 0 50px #f5c91a;
+        box-shadow: 0 0 50px #f5c91a;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 100px #f5c91a;
+        -moz-box-shadow: 0 0 100px #f5c91a;
+        -o-box-shadow: 0 0 100px #f5c91a;
+        box-shadow: 0 0 100px #f5c91a;
+    }
+}
+
+@-moz-keyframes sunFire {
+    0% {
+        -webkit-box-shadow: 0 0 50px #f5c91a;
+        -moz-box-shadow: 0 0 50px #f5c91a;
+        -o-box-shadow: 0 0 50px #f5c91a;
+        box-shadow: 0 0 50px #f5c91a;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 100px #f5c91a;
+        -moz-box-shadow: 0 0 100px #f5c91a;
+        -o-box-shadow: 0 0 100px #f5c91a;
+        box-shadow: 0 0 100px #f5c91a;
+    }
+}
+
+@-o-keyframes sunFire {
+    0% {
+        -webkit-box-shadow: 0 0 50px #f5c91a;
+        -moz-box-shadow: 0 0 50px #f5c91a;
+        -o-box-shadow: 0 0 50px #f5c91a;
+        box-shadow: 0 0 50px #f5c91a;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 100px #f5c91a;
+        -moz-box-shadow: 0 0 100px #f5c91a;
+        -o-box-shadow: 0 0 100px #f5c91a;
+        box-shadow: 0 0 100px #f5c91a;
+    }
+}
+
+@keyframes sunFire {
+    0% {
+        -webkit-box-shadow: 0 0 50px #f5c91a;
+        -moz-box-shadow: 0 0 50px #f5c91a;
+        -o-box-shadow: 0 0 50px #f5c91a;
+        box-shadow: 0 0 50px #f5c91a;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 100px #f5c91a;
+        -moz-box-shadow: 0 0 100px #f5c91a;
+        -o-box-shadow: 0 0 100px #f5c91a;
+        box-shadow: 0 0 100px #f5c91a;
+    }
+}
+
+/* Create animation for rotation. */
+@-webkit-keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@-moz-keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@-o-keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+/* End animations. */
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+h3 {
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+}
+
+#universe {
+    /* Default background to black color if the browser can't dispaly CSS3 gradients. */
+    background: black;
+    
+    /* CSS3 radial gradient for the background, with support for -webkit
+    (Chrome/Opera/Safari), -moz (Firefox), and -o (old Opera) prefixes. */
+    background: -webkit-radial-gradient(#555, #000);
+    background: -moz-radial-gradient(#555, #000);
+    background: -o-radial-gradient(#555, #000);
+    background: radial-gradient(#555, #000);
+    
+}
+
+#stars {
+    /* Position the stars on a lower z-index. */
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    width: 100%;
+    background: url('images/stars.png');
+    
+    /* Attach the starPulse animation */
+    -webkit-animation: starPulse 2s infinite alternate;
+    -moz-animation: starPulse 2s infinite alternate;
+    -o-animation: starPulse 2s infinite alternate;
+    animation: starPulse 2s infinite alternate;
+}
+
+#sun {
+    /* Position the Sun in the exact center of the screen. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    margin-top: -100px;
+    margin-left: -100px;
+    
+    height: 200px;
+    width: 200px;
+    
+    /* Make the sun div a circle. */
+    -webkit-border-radius: 100%;
+    
+    /* CSS3 radial background to make the sun, instead of using an image. */
+    background: orange;
+    background: -webkit-radial-gradient(#f5c313, #ec7e08);
+    background: -moz-radial-gradient(#f5c313, #ec7e08);
+    background: -o-radial-gradient(#f5c313, #ec7e08);
+    background: radial-gradient(#f5c313, #ec7e08);
+    
+    /* Give the sun a shadow/glow */
+    -webkit-box-shadow: 0 0 50px #f5c91a;
+    -moz-box-shadow: 0 0 50px #f5c91a;
+    box-shadow: 0 0 50px #f5c91a;
+    
+    /* Associate the sunFire animation with the Sun. */
+    -webkit-animation: sunFire 2s infinite alternate;
+    -moz-animation: sunFire 2s infinite alternate;
+    -o-animation: sunFire 2s infinite alternate;
+    animation: sunFire 2s infinite alternate;
+}
+
+#earth-orbit {
+    /* Set the Earth's orbit path via a div. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -325px;
+    margin-left: -300px;
+    z-index: 4;
+    height: 650px;
+    width: 600px;
+    
+    /* Make the Earht's orbit a circle. */
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+    
+    /* Associate with the rotate animation. */
+    -webkit-animation: rotate 30s linear infinite;
+    -moz-animation: rotate 30s linear infinite;
+    -o-animation: rotate 30s linear infinite;
+    animation: rotate 30s linear infinite;
+}
+
+#earth {
+    /* Position the Earth on the orbit. */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    
+    margin-top: -40px;
+    
+    /* Associate with the rotate animation. */
+    -webkit-animation: rotate 3s linear infinite;
+    -moz-animation: rotate 3s linear infinite;
+    -o-animation: rotate 3s linear infinite;
+    animation: rotate 3s linear infinite;
+}
+
+#moon-orbit {
+    /* Set the Moon's orbit path via a div. */
+    height: 120px;
+    width: 120px;
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: -20px;
+    margin-top: -60px;
+    
+    /* Make the Moon's orbit a circle. */
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+    
+    /* Associate with the rotate animation. */
+    -webkit-animation: rotate 4s linear infinite reverse;
+    -moz-animation: rotate 4s linear infinite reverse;
+    -o-animation: rotate 4s linear infinite reverse;
+    animation: rotate 4s linear infinite reverse;
+}
+
+#moon {
+    /* Make the Moon using a div, position it on its orbit around Earth. */
+    height: 20px;
+    width: 20px;
+    background: gray;
+    background: -webkit-radial-gradient(#ddd, #888);
+    background: -moz-radial-gradient(#ddd, #888);
+    background: -o-radial-gradient(#ddd, #888);
+    background: radial-gradient(#ddd, #888);
+    
+    /* Make the Moon a circle. */
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+}
