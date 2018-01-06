@@ -1,0 +1,76 @@
+.mainContainer {
+  margin-top: 3rem;
+  border: 1px solid grey;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.mainContainer h1 {
+  margin: 1rem 0;
+}
+
+.links {
+  padding: 1rem;
+}
+
+.navTitle {
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  padding: 0 1rem;
+}
+
+.imgTitle {
+  text-align: center;
+}
+
+#date, #copyright {
+  padding: 0 3rem;
+}
+
+.apiContainer {
+  margin-top: 3rem;
+  padding: 1rem;
+  border: 1px solid grey;
+}
+
+#image {
+  display: block;
+  margin: 0 auto;
+}
+
+#explanation {
+  clear: both;
+  padding: 1rem;
+  margin: 2rem 5rem;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+  .navTitle {
+    border: none;
+    padding: 0 0;
+  }
+  
+  #copyright, #date {
+    padding: 0;
+  }
+  
+  #explanation {
+    margin: 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  #copyright, #date {
+    padding: 0;
+  }
+  
+  #explanation {
+    margin: 2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #explanation {
+    margin: 0;
+  }
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <title>NASA API Examples</title>
+  </head>
+  <body onload="getApodData()">
+    
+    <!-- ------ Navigation ------ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">NASA API Examples</a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="dropdown-divider"></div>
+        <span class="navbar-brand navTitle">Astronomy Picture of the Day</span>
+        <ul class="navbar-nav mr-auto">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              API Examples
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">APOD</a>
+              <a class="dropdown-item" href="#">NeoWs</a>
+              <a class="dropdown-item" href="#">EPIC</a>
+              <a class="dropdown-item" href="#">EONET</a>
+              <a class="dropdown-item" href="#">Earth</a>
+              <a class="dropdown-item" href="#">GeneLab Search</a>
+              <a class="dropdown-item" href="#">NASA Image and Video Library</a>
+              <a class="dropdown-item" href="#">Mars Rover Photos</a>
+              <a class="dropdown-item" href="#">Patents</a>
+              <a class="dropdown-item" href="#">Sounds</a>
+            </div>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- --------------------- -->
+    
+    <div class="container apiContainer">
+      <div class="row">
+        <div class="col-12">
+          
+          <h3 class="imgTitle" id="title"></h3>
+          
+          <div class="imageAndCopyright">
+            <img src="" class="img-fluid" id="image"><br>
+            <p id="copyright" class="float-left"></p>
+            <p id="date" class="float-right"></p>
+          </div>
+          
+          <p id="explanation"></p>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="../js/script.js"></script>
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  </body>
+</html>
