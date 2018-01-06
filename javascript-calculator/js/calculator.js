@@ -165,7 +165,7 @@ function addButton() {
 
 // Functions for the "=", "+/-", and "." buttons.
 function equalsButton() {
-  
+  calculate(true);
 }
 
 function negativeButton() {
@@ -220,7 +220,7 @@ function addNumberToInput(numberToAdd) {
   else if (numberToAdd != 0)
     inputText += numberToAdd;
   else
-    
+    inputText = numberToAdd;
   
   // Set the new input text.
   setInputOutputValue(inputText);
@@ -238,6 +238,10 @@ function calculate(resetExpressionText) {
   // If user recently entered a value, add the input text to the expression text.
   if (window.userEnteredInputValue)
     expressionText += inputText;
+  else {
+    // Remove trailing operator from expression text.
+    expressionText = removeTrailingOperator(expressionText);
+  }
   
   // Evaluate the expression and print to input/output text.
   var total = eval(expressionText);
@@ -247,7 +251,7 @@ function calculate(resetExpressionText) {
   // equalsButton function).
   if (resetExpressionText) {
     setExpressionValue("");
-    setInputOutputValue(0);
+    window.userEnteredOperator = true;
   }
 }
 
@@ -264,6 +268,14 @@ function setInputOutputValue(newValue) {
 }
 function setExpressionValue(newValue) {
   document.getElementById("expressionText").value = newValue;
+}
+
+function removeTrailingOperator(expressionText) {
+  
+  // Remove trailing operator (there should always be one).
+  expressionText = expressionText.slice(0, -3);
+  
+  return expressionText;
 }
 
 // Use keypress event handlers for numbers and operators.
@@ -335,14 +347,8 @@ $(window).keypress(function(e) {
     case 106: // *
       multiplyButton();
       return false
-    case 107: // +
-      addButton();
-      return false;
     case 109: // -
       subtractButton();
-      return false;
-    case 110: // .
-      decimalButton();
       return false;
     case 111: // /
       divideButton();
@@ -360,6 +366,9 @@ $(document).keydown(function(e) {
     case 8: // Backspace
       backspaceButton();
       break;
+    case 13: // Enter
+      equalsButton();
+      break;
     case 27: // Escape
       clearAllButton();
       break;
@@ -368,6 +377,9 @@ $(document).keydown(function(e) {
       break;
     case 107: // +
       addButton();
+      break;
+    case 110: // .
+      decimalButton();
       break;
     default:
       break;
