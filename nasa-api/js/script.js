@@ -12,7 +12,9 @@ function getApodData() {
     // Set the data from the API response.
     setData("title", responseText.title);
     document.getElementById("image").src = responseText.url;
-    setData("copyright", responseText.copyright);
+    
+    var copyright = "&copy; " + responseText.copyright + " - ";
+    setData("copyright", copyright);
     setData("date", responseText.date);
     setData("explanation", responseText.explanation);
     
