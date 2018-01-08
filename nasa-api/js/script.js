@@ -1,21 +1,28 @@
-/*global document, XMLHttpRequest*/
+/*global document, window, moment, XMLHttpRequest*/
 
-function getApodData() {
+(function() {
   
   // Set a loading status message.
   setData("title", "Loading, please wait...");
   
-  var url="https://api.nasa.gov/planetary/apod?api_key=P2CM3yHTryjVXh2oKt6beXfGFxQ17wBNxOrJ7CI4&concept_tags=true";
+  var url="https://api.nasa.gov/planetary/apod?api_key=P2CM3yHTryjVXh2oKt6beXfGFxQ17wBNxOrJ7CI4";
   
   var callback = function(responseText) {
+    
+    // Format the copyright date using Moment.js library.
+    var parsedDate = new Date(responseText.date);
+    var formattedDate = moment(parsedDate).format("MMMM Do YYYY");
+    
+    // Only format the copyright name if it is present.
+    var copyright = "";
+    if (responseText.copyright)
+      copyright = "&copy; " + responseText.copyright + " - ";
     
     // Set the data from the API response.
     setData("title", responseText.title);
     document.getElementById("image").src = responseText.url;
-    
-    var copyright = "&copy; " + responseText.copyright + " - ";
     setData("copyright", copyright);
-    setData("date", responseText.date);
+    setData("date", formattedDate);
     setData("explanation", responseText.explanation);
     
     // Add a border to the explanation, so this doesn't show while loading.
@@ -23,7 +30,7 @@ function getApodData() {
   };
   
   httpGetAsync(url, callback);
-}
+})();
   
 function setData(id, data) {
   document.getElementById(id).innerHTML = data;
