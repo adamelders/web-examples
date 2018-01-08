@@ -38,10 +38,31 @@ h1 {
 }
 
 .info {
-  max-width: 400px;
-  padding: 1rem;
+  max-width: 1000px;
 }
 
-.info input {
-  vertical-align: middle;
+.infoCheck {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+#workaroundInfo, .infoLegend {
+  background: #fff;
+  border: 1px solid grey;
+  padding: 1rem;
+  margin: 2rem 0;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.infoTitle {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+.shortcuts {
+  margin: 0 auto;
+  border: 1px solid grey;
+  box-shadow: 3px 3px 3px grey;
 }

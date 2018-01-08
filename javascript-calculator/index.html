@@ -63,11 +63,66 @@
     </div>
     
     <div class="container info">
-      <div class="row form-check">
-        <input type="checkbox" class="form-check-input" name="workaround" id="workaround">
-        <label class="form-check-label" for="workaround">Use floating-point precision workaround</label>
+      <div class="row form-check infoCheck">
+        <input type="checkbox" class="col-1 form-check-input" name="workaround" id="workaround">
+        <label class="col-10 form-check-label" for="workaround">Use floating-point precision workaround</label>
         
-        <a class="float-right" href="#">?</a>
+        <a class="col-1 float-right" data-toggle="collapse" href="#workaroundInfo">?</a>
+      </div>
+      
+      <div class="row collapse" id="workaroundInfo">
+        <p>
+          <strong>Floating-point precision workaround</strong>
+          <br><br>
+          Because JavaScript is a dynamically-typed language, there is no specific
+          floating-point number type (i.e. Decimal in C#). Fractions such as 1/5 or 1/10
+          will not round "cleanly", like they will in a floating-point data type.
+          <br><br>
+          For example, in JavaScript, 0.1 + 0.2 = 0.30000000000000004, instead of the
+          expected 0.3. To work around this, rather than implementing a library such as
+          <a href="http://mikemcl.github.io/decimal.js/" target="_blank">Decimal.js</a>, I implemented
+          a very basic workaround - which is to multiply each number value in an
+          expression by 10, evaluate the expression, then divide the total by 10.
+          <br><br>
+          This works in most scenarios (at least in this simple application), but in a
+          real-world situation, I would use a JavaScript library that has been tested thoroughly.
+          <br><br>
+          You can find more info on this issue here: <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank">http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html</a>
+          <br><br>
+          <strong>TL;DR</strong>
+          <br><br>
+          If you start getting unexpected answers with this calculator, i.e. tons of
+          extra decimal places, try the workaround!
+        </p>
+      </div>
+      
+      <div class="row infoLegend">
+        <span class="col-12 infoTitle">
+          Calculator Info
+        </span>
+        <br><br>
+        
+        <p>
+          I created this calculator while using the Windows 10 Calculator app as a model.
+          Almost everything I've done in terms of layout and functionality is based on that.
+          I don't plan on adding more complex functionality, such as memory, scientific functions,
+          etc., since I just created this project to get some practice in with JavaScript.
+        </p>
+        <p class="col-5 shortcuts">
+          <strong>Keyboard Shortcuts</strong>
+          <br>
+          0-9: <span class="float-right">Numbers 0-9</span><br>
+          Numpad 0-9: <span class="float-right">Numbers 0-9</span><br>
+          Numpad /: <span class="float-right">Divide</span><br>
+          Numpad *: <span class="float-right">Multiply</span><br>
+          Numpad -: <span class="float-right">Subtract</span><br>
+          Numpad +: <span class="float-right">Add</span><br>
+          Numpad Enter: <span class="float-right">Equals</span><br>
+          Enter/Return: <span class="float-right">Equals</span><br>
+          Esc: <span class="float-right">Clear All (C Button)</span><br>
+          Del: <span class="float-right">Clear Last (CE Button)</span><br>
+          Backspace: <span class="float-right">Backspace (BACK Button)</span><br>
+        </p>
       </div>
     </div>
 

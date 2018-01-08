@@ -30,7 +30,7 @@
   document.getElementById("sevenButton").addEventListener("click", sevenButton);
   document.getElementById("eightButton").addEventListener("click", eightButton);
   document.getElementById("nineButton").addEventListener("click", nineButton);
-  document.getElementById("multiplyButton").addEventListener("click", multiplyButton());
+  document.getElementById("multiplyButton").addEventListener("click", multiplyButton);
   
   document.getElementById("fourButton").addEventListener("click", fourButton);
   document.getElementById("fiveButton").addEventListener("click", fiveButton);
@@ -163,9 +163,13 @@ function decimalButton() {
     
     // If the first button pressed after an operator is decimal, do not add the
     // current input to the new decimal.
+    // Still set userEnteredDecimal to true, in case the user wants to type ".2"
+    // instead of "0.2".
     if (window.userEnteredOperator)
       window.userEnteredDecimal = true;
-    else {
+    
+    // If a user has already entered a decimal, do not add another.
+    else if (inputText.indexOf(".") < 0) {
       inputText += ".";
       setInputOutputValue(inputText);
     }
@@ -181,21 +185,72 @@ function decimalButton() {
 /* ============================ Operator Functions ============================ */
 
 
+// Enumeration to store values for operators.
+var OperatorEnum = {
+  DIVIDE: 0,
+  MULTIPLY: 1,
+  SUBTRACT: 2,
+  ADD: 3,
+  properties: {
+    0: {name: "divide", operator: "/"},
+    1: {name: "multiply", operator: "*"},
+    2: {name: "subtract", operator: "-"},
+    3: {name: "addition", operator: "+"}
+  }
+};
+
 // Define functions for the operator buttons.
+
 function divideButton() {
-  addToExpression("/");
+  var operatorEntered = OperatorEnum.DIVIDE;
+  
+  // If user has not recently entered an operator, add the input and operator to expression.
+  if (!window.userEnteredOperator)
+    addToExpression(operatorEntered);
+  
+  // If the user recently entered different operator, we need to change it.
+  // Do not add the input again.
+  else if (window.userOperatorValue != operatorEntered)
+    replaceOperatorInExpression(operatorEntered);    
 }
 
 function multiplyButton() {
-  addToExpression("*");
+  var operatorEntered = OperatorEnum.MULTIPLY;
+  
+  // If user has not recently entered an operator, add the input and operator to expression.
+  if (!window.userEnteredOperator)
+    addToExpression(operatorEntered);
+  
+  // If the user recently entered different operator, we need to change it.
+  // Do not add the input again.
+  else if (window.userOperatorValue != operatorEntered)
+    replaceOperatorInExpression(operatorEntered);    
 }
 
 function subtractButton() {
-  addToExpression("-");
+  var operatorEntered = OperatorEnum.SUBTRACT;
+  
+  // If user has not recently entered an operator, add the input and operator to expression.
+  if (!window.userEnteredOperator)
+    addToExpression(operatorEntered);
+  
+  // If the user recently entered different operator, we need to change it.
+  // Do not add the input again.
+  else if (window.userOperatorValue != operatorEntered)
+    replaceOperatorInExpression(operatorEntered);    
 }
 
 function addButton() {
-  addToExpression("+");
+  var operatorEntered = OperatorEnum.ADD;
+  
+  // If user has not recently entered an operator, add the input and operator to expression.
+  if (!window.userEnteredOperator)
+    addToExpression(operatorEntered);
+  
+  // If the user recently entered different operator, we need to change it.
+  // Do not add the input again.
+  else if (window.userOperatorValue != operatorEntered)
+    replaceOperatorInExpression(operatorEntered);    
 }
 
 /* ====================== Evaluation/Operation Functions ====================== */
@@ -280,12 +335,14 @@ function addToExpression(operator) {
   var expressionText = getExpressionValue();
   
   // Set the user operator global to true, set value entered to false.
+  // Set global operator value.
   window.userEnteredInputValue = false;
   window.userEnteredOperator = true;
+  window.userOperatorValue = operator;
   
   // If the input value is not 0, add the input text and operator to the expression text.
   if (inputText != 0) {
-    expressionText += inputText + " " + operator + " ";
+    expressionText += inputText + " " + OperatorEnum.properties[operator].operator + " ";
     setExpressionValue(expressionText);
     
     // Reset input text. This is to prevent calculate() from re-using the input value.
@@ -294,6 +351,22 @@ function addToExpression(operator) {
     // Calculate total.
     calculate();
   }
+}
+
+// Function to replace the last operator used in the expression text.
+// Allows the user to change the last operator entered.
+// For example, enter a number, press an operator, change your mind and press another operator.
+function replaceOperatorInExpression(operator) {
+  
+  // Get the current expression, and remove the trailing operator.
+  var expression = removeTrailingOperator(getExpressionValue());
+  
+  // Add the new operator to the expression.
+  expression = expression + " " + OperatorEnum.properties[operator].operator + " ";
+  setExpressionValue(expression);
+  
+  // Set global operator value.
+  window.userOperatorValue = operator;
 }
 
 // Function to calculate the total from the expression text. Includes the input
