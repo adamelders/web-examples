@@ -42,7 +42,7 @@
   document.getElementById("threeButton").addEventListener("click", threeButton);
   document.getElementById("addButton").addEventListener("click", addButton);
   
-  document.getElementById("negativeButton").addEventListener("click", negativeButton);
+  document.getElementById("negateButton").addEventListener("click", negateButton);
   document.getElementById("zeroButton").addEventListener("click", zeroButton);
   document.getElementById("decimalButton").addEventListener("click", decimalButton);
   document.getElementById("equalsButton").addEventListener("click", equalsButton);
@@ -150,8 +150,22 @@ function equalsButton() {
 }
 
 // Define a function for the "+/-" button.
-function negativeButton() {
+function negateButton() {
   
+  // Get input and expression values.
+  var inputText = getInputOutputValue();
+  
+  // Negate the current input value. Do not negate if the user hasn't entered any input.
+  if (inputText != 0 && window.userEnteredInputValue) {
+    if (inputText.indexOf("-") >= 0)
+      inputText = inputText.slice(1);
+    else
+      inputText = "-" + inputText;
+  }
+  
+  // Set input text with negated value.
+  setInputOutputValue(inputText);
+    
 }
 
 // Define a function for the "." button.
@@ -570,6 +584,10 @@ $(window).keydown(function(e) {
       divideButton();
       addHoverEffect("divideButton");
       return false;
+    case 120: // F9
+      negateButton();
+      addHoverEffect("negateButton");
+      return false;
     
     default:
       return false;      
@@ -668,6 +686,9 @@ $(window).keyup(function(e) {
       return false;
     case 111: // /
       removeHoverEffect("divideButton");
+      return false;
+    case 120: // F9
+      removeHoverEffect("negateButton");
       return false;
     
     default:
